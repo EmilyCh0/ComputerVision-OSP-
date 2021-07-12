@@ -2,8 +2,13 @@
 
 
 ### 1. Image stitching <br>
-This creates a blend stitched image from two input images. Corresponding pixels of two images are given. <br>
-Uses bilinear interpolation when inverse warping. <br>
+This code creates a blend stitched image from two input images. <br>
+
+Notice<br>
+
+> Corresponding pixels of two images are given in advance<br>Uses bilinear interpolation when inverse warping <br>Change the value of 'alpha' (parameter of blend_stitching()) to change the ratio of I1 and I2<br>Alpha must be float value between 0 and 1, and bigger alpha makes overlapping area closer to I1.
+
+
 
 **Stitched Result** 👇 <br>
 <img src="https://github.com/EmilyCh0/ComputerVision/blob/master/image/stitching_result.png" alt="" width="700"/>
