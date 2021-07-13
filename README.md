@@ -12,7 +12,7 @@ This code creates a blend stitched image from two input images. <br>
 
 
 
-<center>Stitched Result 👇</center> 
+Stitched Result 👇
 
 <img src="images/stitched.jpg" width="700"/>
 
@@ -22,13 +22,14 @@ This code creates a blend stitched image from two input images. <br>
 
 ### 2. Compute PDF and CDF from grayscale image
 
-In order to compute PDF(Probability Density Function) and CDF(Cumulative Distribution Function), we need grayscale image. <br>This code converts RGB input image into grayscale image. Then computes PDF and CDF from grayscale image. <br>
+In order to compute PDF(Probability Density Function) and CDF(Cumulative Distribution Function), we need grayscale image. This code converts RGB input image into grayscale image. Then computes PDF and CDF from grayscale image. <br>
 PDF and CDF are saved as .txt file after running the code. 
 
 
 
-<center>RGB to Grayscale result 👇<br>
-    <img src="images/rgb2gray.png" alt="" width="500"/></center>
+RGB to Grayscale result 👇<br>
+    <img src="images/rgb2gray.png" alt="" width="500"/>
+
 
 
 
@@ -48,13 +49,14 @@ This code creates higher contrast image by stretching histogram.
 
 
 
-<center>Original grayscale image & stretched image 👇<br>
-    <img src="images/histstretch.png" alt="" width="500"/></center>
+Original grayscale image & stretched image 👇<br>
+    <img src="images/histstretch.png" alt="" width="500"/>
 
 
 
-<center>PDF histogram 👇 (left: before stretching, right: after stretching)<br>
-    <img src="images/histstretchplot.png" alt="" width="500"/></center>
+PDF histogram 👇 (left: before stretching, right: after stretching)<br>
+    <img src="images/histstretchplot.png" alt="" width="500"/>
+
 
 
 
@@ -66,11 +68,12 @@ This code creates higher contrast image by histogram equalization.<br>Histogram 
 
 - **Grayscale**
 
-<center>Grayscale - histogram equalizated result 👇 <br>
-    <img src="images/histeq.png" alt="" width="500"/></center>
+  Grayscale - histogram equalizated result 👇 <br>
+      <img src="images/histeq.png" alt="" width="500"/>
 
- <center>PDF histogram 👇<br>
-    <img src="images/histeqplot.png" alt="" width="500"/></center>
+  PDF histogram 👇<br>
+      <img src="images/histeqplot.png" alt="" width="500"/>
+
 
 
 
@@ -79,9 +82,10 @@ This code creates higher contrast image by histogram equalization.<br>Histogram 
   What would be the result if you apply histogram equalization on each channel of RGB color image? Would it be higher contrast color image? 
 
   
+  
+  Histogram equalization on RGB channels 👇<br>
+      <img src="images/histeqrgb.png" alt="" width="500"/>
 
-<center>Histogram equalization on RGB channels 👇<br>
-    <img src="images/histeqrgb.png" alt="" width="500"/></center>
 
 ​		No, It results to color distortion. 
 
@@ -92,9 +96,10 @@ This code creates higher contrast image by histogram equalization.<br>Histogram 
   To avoid color distortion, apply histogram equalization on Y channel. Y channel has intensity values of light on the image. By applying histogram equalization, you get higher contrast color image.
 
   
+  
+  Histogram equalization on YUV 👇<br>
+      <img src="images/histeqyuv.png" alt="" width="500"/>
 
-<center>Histogram equalization on YUV 👇<br>
-    <img src="images/histeqyuv.png" alt="" width="500"/></center>
 
 
 
