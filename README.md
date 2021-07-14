@@ -68,7 +68,7 @@ This code creates higher contrast image by histogram equalization.<br>Histogram 
 
 - **Grayscale**
 
-  Grayscale - histogram equalizated result 👇 <br>
+  Grayscale - histogram equalized result 👇 <br>
       <img src="images/histeq.png" alt="" width="500"/>
 
   PDF histogram 👇<br>
@@ -79,17 +79,14 @@ This code creates higher contrast image by histogram equalization.<br>Histogram 
 
 - **RGB**
 
-  What would be the result if you apply histogram equalization on each channel of RGB color image? Would it be higher contrast color image? 
+  What would be the result if you apply histogram equalization on each channel of RGB color image? Would it be higher contrast color image? No, It results to color distortion. 
 
   
   
   Histogram equalization on RGB channels 👇<br>
       <img src="images/histeqrgb.png" alt="" width="500"/>
-
-
-​		No, It results to color distortion. 
-
-
+  
+  
 
 - **YUV**
 
@@ -104,4 +101,34 @@ This code creates higher contrast image by histogram equalization.<br>Histogram 
 
 
 ### 5. Histogram matching
+
+Histogram matching creates result image with reference image or reference histogram. Different reference, different result.
+
+- **Grayscale**
+
+  <img src="images/ref1.jpg" width="250"/> 👈 reference 1
+
+  <img src="images/ref1result.png" width="500"/> 👈 Left: original / Right: Histogram matched result
+
+  With bright, low contrast reference image, the intensity values of original image became similar to the reference.
+
+  
+
+  
+
+   <img src="images/ref2.jpg" width="250"/>👈 reference 2
+
+  <img src="images/ref2result.png" width="500"/> 👈 Left: original / Right: Histogram matched result
+
+
+
+- **YUV**
+
+  For color image, histogram matching is applied on Y channel. 
+
+  <img src="images/matchingYUV.png" width="500"/>
+
+  This is the outcome using reference 1.
+
+
 
