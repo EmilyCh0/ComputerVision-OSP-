@@ -108,7 +108,7 @@ Histogram matching creates result image with reference image or reference histog
 
   <img src="images/ref1.jpg" width="250"/> 👈 reference 1
 
-  <img src="images/ref1result.png" width="500"/> 👈 Left: original / Right: Histogram matched result
+  <img src="images/ref1result.png" width="500"/> 👈 Histogram matched result
 
   With bright, low contrast reference image, the intensity values of original image became similar to the reference.
 
@@ -118,7 +118,7 @@ Histogram matching creates result image with reference image or reference histog
 
    <img src="images/ref2.jpg" width="250"/>👈 reference 2
 
-  <img src="images/ref2result.png" width="500"/> 👈 Left: original / Right: Histogram matched result
+  <img src="images/ref2result.png" width="500"/> 👈 Histogram matched result
 
 
 
@@ -129,6 +129,134 @@ Histogram matching creates result image with reference image or reference histog
   <img src="images/matchingYUV.png" width="500"/>
 
   This is the outcome using reference 1.
+
+
+
+### 6. Mean filter
+
+This code generate blurry image by applying mean filter. Adjusting boundary procedure precedes mean filtering. <br>
+
+> **Note**
+>
+> There are three boundary processes in this code. Zero padding, Mirroring, Adjust kernel.<br>Change last parameter of meanfilter() function. Choose from [ zero-paddle / mirroring / adjustkernel ]
+
+
+
+- Grayscale
+
+  <img src="images/meangray.png" width="100%"/>
+
+
+
+- RGB
+
+  <img src="./images/meanrgb.png " width="100%"/>
+
+Zero padding output images have dark boundary. This is because zero padding fill padding area with '0' resulting smaller mean value around boundary. 
+
+
+
+
+
+### 7. Gaussian filter
+
+Unlike mean filtering, Gaussian filtering consider spatial distance. Resulting more natural output image.<br>
+
+Another noticeable characteristic of Gaussian filtering is that it is separable. This is important because output is completely same but run time is shorter.
+
+> Note<br>
+>
+> Change boundary process by adjusting parameter of gaussianfilter() function. <br>Choose from [ zero-paddle / mirroring / adjustkernel ].<br>
+>
+> There are 4 cpp codes, Gaussian filtering on grayscale image, Gaussian filtering on RGB image, Gaussian filtering on grayscale image with separable manner and Gaussian filtering on RGB image with separable manner.
+
+
+
+
+
+<img src="./images/gaussgray.png" width="100%"/>
+
+
+
+<img src="./images/meangauss.png" width="500"/>
+
+With small kernel size, mean filtering result and Gaussian filtering result seems similar. However with bigger kernel size, you can see that Gaussian filtering is much natural than mean filtering.
+
+
+
+### 8. Sobel filter
+
+Sobel filtering extracts edge of the image. <br>Finding edge can be done by finding rapid change of the neighboring pixels.
+
+
+
+
+
+- Grayscale 
+
+<img src="./images/sobelgray.png" width="500"/>
+
+- RGB
+
+<img src="./images/sobelrgb.png" width="500"/>
+
+
+
+
+
+### 9. Laplacian filter
+
+Laplacian filtering is also high-pass filter that extracts edge of the image. <br>Finding edge can be done by finding rapid change of the neighboring pixels.
+
+<img src="./images/laplacian.png" width="500"/>
+
+
+
+### 10. Unsharp masking
+
+Unsharp masking create more vivid image by removing low frequency.<br>
+
+Find low frequency by applying low-pass filtering such as mean filter or Gaussian filter. Then, by subtracting low-pass output, only high frequency is left on the image, resulting vivid image. 
+
+> Note<br>
+>
+> Change parameter of unsharpmask() function. <br>Choose boundary process from [ zero-paddle / mirroring / adjustkernel ].<br>Last parameter is k value which decides strength of unsharp masking. 
+
+- Grayscale
+
+  <img src="./images/unsharpgray.png" width="500"/>
+
+  ☝ Gaussian filter, n=1, sigma=1, boundary process=mirroring, k=0.5
+
+  
+
+- RGB
+
+  <img src="./images/unsharprgb.png" width="500"/>
+
+☝ Gaussian filter, n=1, sigma=1, boundary process=mirroring, k=0.5
+
+You can see that the result of unsharp masking on RGB channel is quite different from expected result. This probably happened because we did not consider intensity difference of each channel. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
