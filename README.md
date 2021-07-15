@@ -1,7 +1,7 @@
 ## Computer Vision ✏
 
+### <mark style='background-color: #d0b8ff'>  </mark><mark style='background-color: #f5f0ff'> 1. Image stitching  </mark> <br>
 
-### 1. Image stitching <br>
 This code creates a blend stitched image from two input images. <br>
 
 
@@ -20,7 +20,7 @@ Stitched Result 👇
 
 
 
-### 2. Compute PDF and CDF from grayscale image
+### <mark style='background-color: #d0b8ff'>  </mark><mark style='background-color: #d0b8ff'>  </mark><mark style='background-color: #f5f0ff'> 2. Compute PDF and CDF from grayscale image  </mark>
 
 In order to compute PDF(Probability Density Function) and CDF(Cumulative Distribution Function), we need grayscale image. This code converts RGB input image into grayscale image. Then computes PDF and CDF from grayscale image. <br>
 PDF and CDF are saved as .txt file after running the code. 
@@ -39,7 +39,7 @@ RGB to Grayscale result 👇<br>
 
 
 
-### 3. Histogram stretching
+### <mark style='background-color: #d0b8ff'>  </mark><mark style='background-color: #f5f0ff'> 3. Histogram stretching  </mark>
 
 This code creates higher contrast image by stretching histogram.
 
@@ -60,7 +60,7 @@ PDF histogram 👇 (left: before stretching, right: after stretching)<br>
 
 
 
-### 4. Histogram equalization
+### <mark style='background-color: #d0b8ff'>  </mark><mark style='background-color: #f5f0ff'> 4. Histogram equalization  </mark>
 
 This code creates higher contrast image by histogram equalization.<br>Histogram equalization is similar to histogram stretching in the way that it results to higher contrast outcome. However, unlike histogram stretching, histogram equalization is fully automatic. In other words, setting parameters for linear equation is not needed.
 
@@ -100,7 +100,7 @@ This code creates higher contrast image by histogram equalization.<br>Histogram 
 
 
 
-### 5. Histogram matching
+### <mark style='background-color: #d0b8ff'>  </mark><mark style='background-color: #f5f0ff'> 5. Histogram matching  </mark>
 
 Histogram matching creates result image with reference image or reference histogram. Different reference, different result.
 
@@ -132,7 +132,7 @@ Histogram matching creates result image with reference image or reference histog
 
 
 
-### 6. Mean filter
+### <mark style='background-color: #d0b8ff'>  </mark><mark style='background-color: #f5f0ff'> 6. Mean filter  </mark>
 
 This code generate blurry image by applying mean filter. Adjusting boundary procedure precedes mean filtering. <br>
 
@@ -158,7 +158,7 @@ Zero padding output images have dark boundary. This is because zero padding fill
 
 
 
-### 7. Gaussian filter
+### <mark style='background-color: #d0b8ff'>  </mark><mark style='background-color: #f5f0ff'> 7. Gaussian filter  </mark>
 
 Unlike mean filtering, Gaussian filtering consider spatial distance. Resulting more natural output image.<br>
 
@@ -184,7 +184,7 @@ With small kernel size, mean filtering result and Gaussian filtering result seem
 
 
 
-### 8. Sobel filter
+### <mark style='background-color: #d0b8ff'>  </mark><mark style='background-color: #f5f0ff'> 8. Sobel filter  </mark>
 
 Sobel filtering extracts edge of the image. <br>Finding edge can be done by finding rapid change of the neighboring pixels.
 
@@ -204,7 +204,7 @@ Sobel filtering extracts edge of the image. <br>Finding edge can be done by find
 
 
 
-### 9. Laplacian filter
+### <mark style='background-color: #d0b8ff'>  </mark><mark style='background-color: #f5f0ff'> 9. Laplacian filter  </mark>
 
 Laplacian filtering is also high-pass filter that extracts edge of the image. <br>Finding edge can be done by finding rapid change of the neighboring pixels.
 
@@ -212,7 +212,7 @@ Laplacian filtering is also high-pass filter that extracts edge of the image. <b
 
 
 
-### 10. Unsharp masking
+### <mark style='background-color: #d0b8ff'>  </mark><mark style='background-color: #f5f0ff'> 10. Unsharp masking  </mark>
 
 Unsharp masking create more vivid image by removing low frequency.<br>
 
@@ -234,7 +234,7 @@ Find low frequency by applying low-pass filtering such as mean filter or Gaussia
 
   <img src="./images/unsharprgb.png" width="500"/>
 
-☝ Gaussian filter, n=1, sigma=1, boundary process=mirroring, k=0.5
+  ☝ Gaussian filter, n=1, sigma=1, boundary process=mirroring, k=0.5
 
 You can see that the result of unsharp masking on RGB channel is quite different from expected result. This probably happened because we did not consider intensity difference of each channel. 
 
