@@ -2,7 +2,10 @@
 
 <br>
 
-### 1. Image stitching 
+1. [Image stitching](#1.-Image-stitching)
+2. [PDF and CDF from grayscale image](#2.-Compute-PDF-and-CDF-from-grayscale-image)
+
+### 📌 1. Image stitching 
 
 This code creates a blend stitched image from two input images. <br>
 
@@ -22,7 +25,7 @@ Stitched Result 👇
 
 
 
-### <mark style='background-color: #d0b8ff'>  </mark>2. Compute PDF and CDF from grayscale image
+### <mark style='background-color: #d0b8ff'>  </mark>📌 2. Compute PDF and CDF from grayscale image
 
 In order to compute PDF(Probability Density Function) and CDF(Cumulative Distribution Function), we need grayscale image. This code converts RGB input image into grayscale image. Then computes PDF and CDF from grayscale image. <br>
 PDF and CDF are saved as .txt file after running the code. 
@@ -42,7 +45,7 @@ RGB to Grayscale result 👇<br>
 
 
 
-### 3. Histogram stretching
+### 📌 3. Histogram stretching
 
 This code creates higher contrast image by stretching histogram.
 
@@ -63,7 +66,7 @@ PDF histogram 👇 (left: before stretching, right: after stretching)<br>
 
 
 
-### 4. Histogram equalization
+### 📌 4. Histogram equalization
 
 This code creates higher contrast image by histogram equalization.<br>Histogram equalization is similar to histogram stretching in the way that it results to higher contrast outcome. However, unlike histogram stretching, histogram equalization is fully automatic. In other words, setting parameters for linear equation is not needed.
 
@@ -103,7 +106,7 @@ This code creates higher contrast image by histogram equalization.<br>Histogram 
 
 
 
-### 5. Histogram matching
+### 📌 5. Histogram matching
 
 Histogram matching creates result image with reference image or reference histogram. Different reference, different result.
 
@@ -135,7 +138,7 @@ Histogram matching creates result image with reference image or reference histog
 
 
 
-### 6. Mean filter
+### 📌 6. Mean filter
 
 This code generate blurry image by applying mean filter. Adjusting boundary procedure precedes mean filtering. <br>
 
@@ -161,7 +164,7 @@ Zero padding output images have dark boundary. This is because zero padding fill
 
 
 
-### 7. Gaussian filter
+### 📌 7. Gaussian filter
 
 Unlike mean filtering, Gaussian filtering consider spatial distance. Resulting more natural output image.<br>
 
@@ -187,7 +190,7 @@ With small kernel size, mean filtering result and Gaussian filtering result seem
 
 
 
-### 8. Sobel filter
+### 📌 8. Sobel filter
 
 Sobel filtering extracts edge of the image. <br>Finding edge can be done by finding rapid change of the neighboring pixels.
 
@@ -207,7 +210,7 @@ Sobel filtering extracts edge of the image. <br>Finding edge can be done by find
 
 
 
-### 9. Laplacian filter
+### 📌 9. Laplacian filter
 
 Laplacian filtering is also high-pass filter that extracts edge of the image. <br>Finding edge can be done by finding rapid change of the neighboring pixels.
 
@@ -215,7 +218,7 @@ Laplacian filtering is also high-pass filter that extracts edge of the image. <b
 
 
 
-### 10. Unsharp masking
+### 📌 10. Unsharp masking
 
 Unsharp masking create more vivid image by removing low frequency.<br>
 
@@ -243,7 +246,7 @@ You can see that the result of unsharp masking on RGB channel is quite different
 
 
 
-### 11. Salt and pepper noise (Generation/Removal)
+### 📌 11. Salt and pepper noise (Generation/Removal)
 
 This code is to generate salt-and-pepper noise on random pixels of the image, then remove salt-and-pepper noise. Noise are randomly scattered on image. Salt is white(255) noise pixels and pepper is black(0) noise pixels. <br>Removing salt-and-pepper is done by median filtering.
 
@@ -279,7 +282,7 @@ Salt and pepper noise on color image is not white and black because I applied no
 
 
 
-### 12. Gaussian noise (Generation/Removal)
+### 📌 12. Gaussian noise (Generation/Removal)
 
 This code generate Gaussian noise on input image. <br>Then removes Gaussian noise by Gaussian filtering and Bilateral filtering.<br>Bilateral filtering considers not only the distance but also intensity difference or color difference between neighboring pixels. <br>This prevents blurry edge of Gaussian filtering.
 
@@ -310,13 +313,11 @@ This code generate Gaussian noise on input image. <br>Then removes Gaussian nois
 
 
 
-
-
-## \< Image Segmentation \>
+### Image Segmentation
 
 Image segmentation is dividing an image into non-overlapping region with similar information.
 
-### 13. Adaptive thresholding
+### 📌 13. Adaptive thresholding
 
 Adaptive thresholding compute local threshold of each pixel. Using local threshold prevents contamination on shadow area that happens on global thresholding. 
 
@@ -333,13 +334,13 @@ Adaptive thresholding compute local threshold of each pixel. Using local thresho
 
 <img src="./images/adaptivethres.png" width="500"/>
 
-👇 n = 2, bnumber = 0.7  /  n = 2, bnumber = 0.9 👆
+👇 n = 2, bnumber = 0.7 	 **/**  	n = 2, bnumber = 0.9 👆
 
 <img src="./images/adaptivethres2.png" width="250"/>
 
 
 
-### 14. K means clustering
+### 📌 14. K means clustering
 
 If we know representative intensity, we can label all the pixels. If we know all the label of each pixel, we can find representative intensity with average. However the problem is that we don’t know both of them. The goal of K means clustering is to find k number of cluster centers by following process.
 
@@ -360,7 +361,7 @@ By repeating these procedures above, you get the final result.
 
 - Grayscale
 
-<img src="./images/kmeangray.png" width="500"/>
+  <img src="./images/kmeangray.png" width="500"/>
 
 
 
@@ -374,7 +375,7 @@ K means clustering also has weaknesses. If random cluster center is badly select
 
 
 
-### + Mean shift
+### 📌 + Mean shift
 
 Mean shift algorithm seeks modes or local maxima of density in the feature space. K had to be manually defined in K-means clustering but by mean shift doesn't. With random seeds, first calculate mean of a search window. Then shift search window and repeat these procedures. When the mean value doesn’t change anymore, that point is the mode. No matter how many random seeds, final mean value always converge to modes. 
 
@@ -386,7 +387,41 @@ Mean shift algorithm seeks modes or local maxima of density in the feature space
 
 <img src="./images/meanshift.png" width="750"/>
 
-You can change input parameters on the left.
+You can change input parameters on the left of this program.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
