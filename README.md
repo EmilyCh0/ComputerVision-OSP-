@@ -2,8 +2,8 @@
 
 <br>
 
-1. [Image stitching](#1.-Image-stitching)
-2. [PDF and CDF from grayscale image](#2.-Compute-PDF-and-CDF-from-grayscale-image)
+1. [Image stitching](#-1-image-stitching)
+2. [PDF and CDF from grayscale image](#---2-compute-pdf-and-cdf-from-grayscale-image)
 
 ### 📌 1. Image stitching 
 
