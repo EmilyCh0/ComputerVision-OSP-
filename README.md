@@ -2,8 +2,39 @@
 
 <br>
 
-1. [Image stitching](#-1-image-stitching)
-2. [PDF and CDF from grayscale image](#---2-compute-pdf-and-cdf-from-grayscale-image)
+
+
+1. [Image Stitching](#-1-image-stitching)
+
+2. [PDF and CDF](#---2-compute-pdf-and-cdf-from-grayscale-image)
+
+3. [Histogram Stretching](#-3-histogram-stretching)
+
+4. [Histogram Equalization](#-4-histogram-equalization)
+
+5. [Histogram Matching](#-5-histogram-matching)
+
+6. [Mean Filter](#-6-mean-filter)
+
+7. [Gaussian Filter](#-7-gaussian-filter)
+
+8. [Sobel Filter](#-8-sobel-filter)
+
+9. [Laplacian Filter](#-9-laplacian-filter)
+
+10. [Unsharp Masking](#-10-unsharp-masking)
+
+11. [Salt and Pepper Noise (generation/removal)](#-11-salt-and-pepper-noise-generationremoval)
+
+12. [Gaussian Noise (generation/removal)](#-12-gaussian-noise-generationremoval)
+
+13. [Adaptive Thresholding](#-13-adaptive-thresholding)
+
+14. [K means Clustering](#-14-k-means-clustering)
+
+    [Mean Shift](#--mean-shift)
+
+15. 
 
 ### 📌 1. Image stitching 
 
