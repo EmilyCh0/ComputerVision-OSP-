@@ -2,45 +2,18 @@
 
 <br>
 
+Week 1 Transformation<br>[1. Image Stitching](#-1-image-stitching)<br>Week 2 Histogram<br>[2. PDF and CDF](#---2-compute-pdf-and-cdf-from-grayscale-image)  /  [3. Histogram Stretching](#-3-histogram-stretching)  /  [4. Histogram Equalization](#-4-histogram-equalization)  /  [5. Histogram Matching](#-5-histogram-matching)<br>Week 3 Filtering(Convolution)<br>[6. Mean Filter](#-6-mean-filter)  /  [7. Gaussian Filter](#-7-gaussian-filter)<br>[8. Sobel Filter](#-8-sobel-filter)  /  [9. Laplacian Filter](#-9-laplacian-filter)  /  [10. Unsharp Masking](#-10-unsharp-masking)<br>Week 4 Noise generation & restoration<br>[11. Salt and Pepper Noise (generation/removal)](#-11-salt-and-pepper-noise-generationremoval)  /  [12. Gaussian Noise (generation/removal)](#-12-gaussian-noise-generationremoval)<br>Week 5 Segmentation<br>[13. Adaptive Thresholding](#-13-adaptive-thresholding)  /  [14. K means Clustering](#-14-k-means-clustering)   /   [Mean Shift](#--mean-shift)
 
 
-1. [Image Stitching](#-1-image-stitching)
-
-2. [PDF and CDF](#---2-compute-pdf-and-cdf-from-grayscale-image)
-
-3. [Histogram Stretching](#-3-histogram-stretching)
-
-4. [Histogram Equalization](#-4-histogram-equalization)
-
-5. [Histogram Matching](#-5-histogram-matching)
-
-6. [Mean Filter](#-6-mean-filter)
-
-7. [Gaussian Filter](#-7-gaussian-filter)
-
-8. [Sobel Filter](#-8-sobel-filter)
-
-9. [Laplacian Filter](#-9-laplacian-filter)
-
-10. [Unsharp Masking](#-10-unsharp-masking)
-
-11. [Salt and Pepper Noise (generation/removal)](#-11-salt-and-pepper-noise-generationremoval)
-
-12. [Gaussian Noise (generation/removal)](#-12-gaussian-noise-generationremoval)
-
-13. [Adaptive Thresholding](#-13-adaptive-thresholding)
-
-14. [K means Clustering](#-14-k-means-clustering)
-
-    [Mean Shift](#--mean-shift)
-
-15. 
 
 ### 📌 1. Image stitching 
 
-This code creates a blend stitched image from two input images. <br>
+This code creates a blend stitched image from two input images using affine transformation. <br>
 
-
+1. Estimate affine transformation.<br>If you have at least 3 pairs of corresponding pixels, affine transformation can be computed with formula. 
+2. Compute the size of a final merged image I_F.<br>This is done by computing p1, p2, p3, p4 using A21(affine transformation from I2 to I1).
+3. Inverse warping using A12.
+4. Blend stitch two images I1 and I2'(= affine transformed I2 = output of inverse warping).
 
 > **Note**
 >
