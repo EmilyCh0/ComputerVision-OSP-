@@ -2,13 +2,21 @@
 
 <br>
 
-Week 1 Transformation<br>[1. Image Stitching](#-1-image-stitching)<br>Week 2 Histogram<br>[2. PDF and CDF](#---2-compute-pdf-and-cdf-from-grayscale-image)  /  [3. Histogram Stretching](#-3-histogram-stretching)  /  [4. Histogram Equalization](#-4-histogram-equalization)  /  [5. Histogram Matching](#-5-histogram-matching)<br>Week 3 Filtering(Convolution)<br>[6. Mean Filter](#-6-mean-filter)  /  [7. Gaussian Filter](#-7-gaussian-filter)<br>[8. Sobel Filter](#-8-sobel-filter)  /  [9. Laplacian Filter](#-9-laplacian-filter)  /  [10. Unsharp Masking](#-10-unsharp-masking)<br>Week 4 Noise generation & restoration<br>[11. Salt and Pepper Noise (generation/removal)](#-11-salt-and-pepper-noise-generationremoval)  /  [12. Gaussian Noise (generation/removal)](#-12-gaussian-noise-generationremoval)<br>Week 5 Segmentation<br>[13. Adaptive Thresholding](#-13-adaptive-thresholding)  /  [14. K means Clustering](#-14-k-means-clustering)   /   [Mean Shift](#--mean-shift)
+**Week 1 Transformation**<br>	[1. Image Stitching](#-1-image-stitching)<br>
+
+**Week 2 Histogram**<br>	[2. PDF and CDF](#---2-compute-pdf-and-cdf-from-grayscale-image)  /  [3. Histogram Stretching](#-3-histogram-stretching)  /  [4. Histogram Equalization](#-4-histogram-equalization)  /  [5. Histogram Matching](#-5-histogram-matching)<br>
+
+**Week 3 Filtering(Convolution)**<br>	[6. Mean Filter](#-6-mean-filter)  /  [7. Gaussian Filter](#-7-gaussian-filter)<br>	[8. Sobel Filter](#-8-sobel-filter)  /  [9. Laplacian Filter](#-9-laplacian-filter)  /  [10. Unsharp Masking](#-10-unsharp-masking)<br>
+
+**Week 4 Noise generation & restoration**<br>	[11. Salt and Pepper Noise (generation/removal)](#-11-salt-and-pepper-noise-generationremoval)  /  [12. Gaussian Noise (generation/removal)](#-12-gaussian-noise-generationremoval)<br>
+
+**Week 5 Segmentation**<br>	[13. Adaptive Thresholding](#-13-adaptive-thresholding)  /  [14. K means Clustering](#-14-k-means-clustering)   /   [Mean Shift](#--mean-shift)
 
 
 
 ### 📌 1. Image stitching 
 
-This code creates a blend stitched image from two input images using affine transformation. <br>
+This code creates a blend stitched image from two input images through the process below. <br>
 
 1. Estimate affine transformation.<br>If you have at least 3 pairs of corresponding pixels, affine transformation can be computed with formula. 
 2. Compute the size of a final merged image I_F.<br>This is done by computing p1, p2, p3, p4 using A21(affine transformation from I2 to I1).
@@ -395,49 +403,131 @@ You can change input parameters on the left of this program.
 
 
 
+### 📌 15. Laplacian of Gaussian
+
+There are variety of methods to detect edge. To detect edge, you can use high-pass filtering. However, if you simply apply high-pass filtering on the image with noise, you won’t get satisfying result, because the noise area is magnified through high-pass filtering.<br>To overcome this problem, apply low-pass filter like Gaussian filter before applying high-pass filter. <br>If you use small window for smoothing, localization will be good, but little bit of noise would remain. If you use big window, image get over smoothed so there will be no more noise but result would be blurry. 
+
+This code applies Gaussian filtering to remove noise. Then applies Laplacian filter for edge detection.
+
+> **Note**
+>
+> Gaussian filter and Laplacian filter both uses mirroring for boundary process.<br>You can change window size and sigma of Gaussian filter on line 32~34. Default window_radius is 2, sigma_t is 2 and sigma_s is 2.
+
+<img src="./images/lapaciangaussian.png" width="750"/>
+
+
+
+### 📌 16. Canny edge detector
+
+Canny edge detection finds optimal variance of low-pass filtering. With Canny method, precise location of edge is computed with single pixel. Key idea of Canny edge detection is non-maximum suppression which is surviving only pixels with a larger edge magnitude within a small window. 
+
+> **Note**
+>
+> This code uses Canny function provided by opencv.
+>
+> Change parameters of Canny function on line 27. 3rd parameter is first threshold and 4th parameter is second threshold. 5th parameter is the variance of Gaussian filter.
+
+
+
+<img src="./images/canny.png" width="500"/>
+
+👆 Threshold 50, 130
+
+
+
+### 📌 17. Harris corner detector
+
+> Note
+>
+> Uses cornerHarris() function from opencv. cornerHarris() returns corner response value R.
+
+
+
+<img src="./images/harris1.png" width="500"/>
+
+Top left is the Harris response result. Top right is the result of corner points. By comparing response result and threshold value, only pixels that passes threshold are considered as corner points.<br>
+
+Bottom left is the result after non-maximum suppression. This is similar to canny edge detector non-maximum suppression but the difference is that canny edge considers direction but harris corner only judge whether center of the window is the maximum or not. <br>
+
+Bottom right is the result after subpixel refinement. This uses cornerSubPix() function.<br>
+
+The number of corner points of each process are also printed on the screen.
+
+<img src="./images/harris2.png" width="500"/>
+
+<img src="./images/harris3.png" width="500"/>
 
 
 
 
 
+### 📌 18. SIFT
+
+Sift invariant blob detector finds distinct points of the image. Then finds corresponding pairs of points by comparing distinct points of two image.
+
+> **Procedure:** 
+>
+> First is scale-space extrema detection. We should consider both scale and space. So, find maximum from different scales, and find maximum within spatial neighbors. Find out whether it is the peek point or not just like non-maximum suppression. <br>Second procedure is key point localization. <br>Third is orientation assignment. Take 16 by 16 window, compute edge orientation for each 2 by 2 block. Then, throw out weak edges, and create histogram by accumulating the Gaussian weighted edge magnitude. <br>Last step is descriptor construction. 
+>
+> Next is feature matching. One feature can match the other if these are nearest neighbors and distance between is small enough. Problem is it’s reliability. By cross-checking, reliability problem can be solved. However, problem happens when there are two similar result. By using threshold ratio, we can check whether it is reliable or not. If the ratio is close to 1, then it is not reliable. 
+
+> **Note**
+>
+> On line 87, you can change cross checking option. Default is "true".
+> On line 88, you can change ratio threshold option. Default is "true".
+> To change ratio threshold value, change value on line 184. Default is 0.8.
 
 
 
 
 
+<img src="./images/si.png" width="750"/>
+
+There are two image as input images. These two images are photo of a same mountain but in slightly different view. This code finds distinct points of each image then find correspondence of distinct points.
 
 
 
 
 
+<img src="./images/sift1.png" width="750"/>
 
 
 
+👆 ratio_threshold=false, crosscheck=false 
+
+Both options are set false. Which means, all the points are connected. 2865 keypoints are found on input1, 2623 keypoints are found on input2. 
 
 
 
+<img src="./images/sift2.png" width="750"/>
+
+👆 ratio_threshold=false, crosscheck=true
+
+Filtered out corresponding pairs by cross checking. Matched pairs have decreased to 1354.
 
 
 
+<img src="./images/sift3.png" width="750"/>
+
+👆 ratio_threshold=true, crosscheck=true, threshold = 0.8
+
+Both options are set true. Matching pairs have decreased to 969.
 
 
 
+### 📌 19. SURF
+
+> **Procedure:**
+>
+> 1. Detect the keypoints using SURF detector
+> 2. Calculate descriptors (feature vectors)
+> 3. Match descriptor vectors using FLANN matcher
+> 4. Calculate max and min distances between keypoints
+> 5. Filter out good matches (distance <= min_distance*3)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+<img src="./images/feature2d1.png" width="750"/>
 
 
 
