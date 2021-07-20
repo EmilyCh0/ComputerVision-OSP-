@@ -12,6 +12,10 @@
 
 **Week 5 Segmentation**<br>	[13. Adaptive Thresholding](#-13-adaptive-thresholding)  /  [14. K means Clustering](#-14-k-means-clustering)   /   [Mean Shift](#--mean-shift)
 
+**Week 6 Edge&Corner detection**<br>	[15. Laplacian of Gaussian](#-15-laplacian-of-gaussian)  /  [16. Canny edge detector](#-16-canny-edge-detector)  /  [17. Harris corner detector](#-17-harris-corner-detector)
+
+**Week 7 Find and match corresponding points**<br>	[18. SIFT](#-18-sift)  /  [19. SURF](#-19-surf)
+
 
 
 ### 📌 1. Image stitching 
@@ -437,9 +441,7 @@ Canny edge detection finds optimal variance of low-pass filtering. With Canny me
 
 ### 📌 17. Harris corner detector
 
-> Note
->
-> Uses cornerHarris() function from opencv. cornerHarris() returns corner response value R.
+> **Note**<br>Uses cornerHarris() function from opencv. cornerHarris() returns corner response value R.
 
 
 
@@ -482,6 +484,8 @@ Sift invariant blob detector finds distinct points of the image. Then finds corr
 
 
 <img src="./images/si.png" width="750"/>
+
+👆 input1, input2
 
 There are two image as input images. These two images are photo of a same mountain but in slightly different view. This code finds distinct points of each image then find correspondence of distinct points.
 
