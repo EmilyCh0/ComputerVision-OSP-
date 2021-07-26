@@ -16,7 +16,7 @@
 
 **Week 7 Find and match corresponding points**<br>	[18. SIFT](#-18-sift)  /  [19. SURF](#-19-surf)
 
-
+**Week 8 Image stitching**<br>[20. Using SIFT]  /  [21. Using SIFT + RANSAC] 
 
 ### 📌 1. Image stitching 
 
@@ -535,5 +535,78 @@ Both options are set true. Matching pairs have decreased to 969.
 
 
 
+### 📌 20. Image stitching using SIFT
 
+Uses SIFT to find matching pairs.
+
+> On line 91, change cross checking option. Default is "true".
+> On line 92, change ratio threshold option. Default is "true".
+> To change ratio threshold value, change value on line 247. Default is 0.8.
+> On line 159, you can change alpha value for blend stitching. Default is 0.5.
+
+The number of key points found on each input image and the number matched pairs are printed on screen.
+
+
+
+<img src="./images/stitchingsift.png" width="750"/>
+
+👆 Nearest neighbor inverse warping
+
+<img src="./images/stitchingsift2.png" width="750"/>
+
+👆 Bilinear inverse warping
+
+
+
+### 📌 21. Image stitching using RANSAC
+
+This code uses SIFT to find matching pairs and uses RANSAC for computing affine transformation matrix.
+
+RANSAC is robust to outliers, applicable for larger number of objective function parameters than Hough transform. Also, choosing optimal parameters are easier than Hough transform. However, it’s computational time grows quickly with fraction of outliers and number of parameters, and it is not good for getting multiple fits, because it only produces one result. 
+
+> **Procedure**:
+>
+> 1. Sample 2 points(number of points can be different) randomly to fit the model. 
+> 2. Second is line fitting with sampled points. Solve for model parameters using samples. 
+> 3. Find the fraction of inliers within a preset threshold of the model. 
+> 4. Then repeat these three process until the best model is found with high confidence. 
+>
+> There are three parameters to set. The number of trials, number of sampled points, and threshold.
+
+>**Note**
+>
+>On line 94, you can change cross checking option. Default is "true".
+>On line 95, you can change ratio threshold option. Default is "true".
+>
+>On line 110, 111 you can change parameters of cal_affine() function.
+>3rd parameter is number of sampled points, 4th parameter is number of trials, last is distance threshold. Default is 3, 50, 0.3.
+>
+>To change ratio threshold value, change value on line 250. Default is 0.8.
+>On line 162, you can change alpha value for blend stitching. Default is 0.5.
+
+<img src="./images/ransac1.png" width="750"/>
+
+👆 Parameter setting => cal_affine<float>(srcPoints, dstPoints, 3, 50, 0.3);
+
+
+
+<img src="./images/ransac2.png" width="750"/>
+
+👆 Parameter setting => cal_affine<float>(srcPoints, dstPoints, 3, 10, 0.3);
+
+
+
+### 📌 22. Line fitting using Hough transform
+
+Hough transform is a method to fit multiple lines. Key idea is to transform (x, y) to (a, b).<br>
+
+Hough transformation is robust to outliers, fairly efficient, and provides multiple good fits. However, it is sensitive to noise, there is bin size trades off, and it is not suitable for more than a few parameters.
+
+<img src="./images/houghlines.png" width="750"/>
+
+👆 HoughLines
+
+<img src="./images/houghlinesP.png" width="750"/>
+
+👆 HoughLinesP
 
