@@ -1,6 +1,12 @@
-## Computer Vision ✏
+## **Computer Vision** ✏
 
 <br>
+
+<p align="center">
+
+### Table of Contents 
+
+--------------------
 
 **Week 1 Transformation**<br>	[1. Image Stitching](#-1-image-stitching)<br>
 
@@ -16,7 +22,13 @@
 
 **Week 7 Find and match corresponding points**<br>	[18. SIFT](#-18-sift)  /  [19. SURF](#-19-surf)
 
-**Week 8 Image stitching**<br>[20. Using SIFT]  /  [21. Using SIFT + RANSAC] 
+**Week 8 Image stitching & Line fitting**<br>	[20. Using SIFT](#-20-image-stitching-using-sift)  /  [21. Using SIFT + RANSAC](#-21-image-stitching-using-ransac)   /  [22. Hough transform](#-22-line-fitting-using-hough-transform)
+
+--------------------------
+
+</p>
+
+
 
 ### 📌 1. Image stitching 
 
