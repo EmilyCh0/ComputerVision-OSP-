@@ -2,11 +2,11 @@
 
 <br>
 
-<p align="center">
 
-### Table of Contents 
 
 --------------------
+
+### Table of Contents 
 
 **Week 1 Transformation**<br>	[1. Image Stitching](#-1-image-stitching)<br>
 
